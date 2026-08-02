@@ -51,83 +51,82 @@
   }
   .star-icon{display:inline-block;width:1em;height:1em;vertical-align:-0.12em;}
 
-  /* ---------- Layout: website style (top navbar + hero) ---------- */
+  /* ---------- Layout: desktop-app style (title bar + sidebar) ---------- */
+  html,body{height:100%;}
   html{scroll-behavior:smooth;}
 
-  .site-header{
-    position:sticky;top:0;z-index:20;
-    background:rgba(15,42,74,0.97);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid rgba(230,204,126,0.25);
+  .titlebar{
+    height:50px;flex-shrink:0;
+    background:var(--navy-deep);
+    border-bottom:1px solid rgba(230,204,126,0.22);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 18px 0 16px;
+    position:sticky;top:0;z-index:30;
   }
-  .nav-inner{
-    max-width:1240px;margin:0 auto;
-    display:flex;align-items:center;gap:28px;
-    padding:12px 32px;
+  .titlebar-left{display:flex;align-items:center;gap:9px;min-width:0;}
+  .titlebar-left svg{flex-shrink:0;}
+  .titlebar-left .tb-name{color:#fff;font-family:'Lora',serif;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .titlebar-right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+  .version-pill{
+    display:inline-flex;align-items:center;gap:6px;
+    background:rgba(230,204,126,0.14);color:var(--gold-light);
+    border:1px solid rgba(230,204,126,0.3);
+    font-size:10.5px;font-weight:700;letter-spacing:.03em;
+    padding:5px 10px;border-radius:999px;white-space:nowrap;
   }
-  .brand{display:flex;align-items:center;gap:11px;flex-shrink:0;margin-right:auto;}
-  .brand svg{flex-shrink:0;}
-  .brand-text .name{font-family:'Lora',serif;font-weight:700;font-size:15.5px;color:#fff;letter-spacing:0.02em;line-height:1.15;}
-  .brand-text .sub{font-size:10px;color:var(--gold-light);letter-spacing:0.09em;text-transform:uppercase;margin-top:1px;}
 
-  nav.navlist{display:flex;align-items:center;gap:2px;}
+  .app-shell{display:flex;min-height:calc(100vh - 50px);}
+
+  .sidebar{
+    width:222px;flex-shrink:0;
+    background:linear-gradient(175deg,var(--navy) 0%,var(--navy-deep) 100%);
+    color:#fff;display:flex;flex-direction:column;
+    position:sticky;top:50px;height:calc(100vh - 50px);
+  }
+  nav.navlist{padding:14px 10px;flex:1;}
   .navlist a{
-    display:flex;align-items:center;gap:7px;
-    padding:9px 14px;border-radius:8px;
-    color:rgba(255,255,255,0.70);
-    text-decoration:none;
-    font-size:13.5px;font-weight:600;
-    cursor:pointer;white-space:nowrap;
-    transition:background .15s, color .15s;
+    display:flex;align-items:center;gap:11px;
+    padding:10px 13px;margin-bottom:3px;border-radius:9px;
+    color:rgba(255,255,255,0.72);text-decoration:none;
+    font-size:13.5px;font-weight:500;cursor:pointer;
+    transition:background .15s, color .15s;border:1px solid transparent;
   }
   .navlist a svg{opacity:.85;flex-shrink:0;}
-  .navlist a:hover{background:rgba(255,255,255,0.08);color:#fff;}
+  .navlist a:hover{background:rgba(255,255,255,0.06);color:#fff;}
   .navlist a.active{
-    background:rgba(230,204,126,0.16);
-    color:var(--gold-light);
+    background:rgba(230,204,126,0.13);color:var(--gold-light);
+    border-color:rgba(230,204,126,0.25);font-weight:600;
   }
-  .nav-meta{
-    flex-shrink:0;font-size:11px;color:rgba(255,255,255,0.55);
-    text-align:right;line-height:1.4;
+  .sidebar-foot{
+    padding:12px 16px 16px;font-size:10.5px;color:rgba(255,255,255,0.42);
+    border-top:1px solid rgba(255,255,255,0.10);line-height:1.6;
   }
-  .nav-meta b{color:rgba(255,255,255,0.85);}
+  .sidebar-foot b{color:rgba(255,255,255,0.72);}
 
-  .hero{
-    background:linear-gradient(175deg,var(--navy) 0%,var(--navy-deep) 100%);
-    color:#fff;position:relative;overflow:hidden;
+  .workspace{flex:1;min-width:0;display:flex;flex-direction:column;}
+  .workspace-header{
+    background:var(--paper);border-bottom:1px solid var(--border);
+    padding:16px 30px;display:flex;align-items:center;justify-content:space-between;
+    gap:16px;flex-wrap:wrap;position:sticky;top:50px;z-index:10;
   }
-  .hero-inner{
-    max-width:1240px;margin:0 auto;padding:34px 32px 30px;
-    position:relative;z-index:1;
-    display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;
-  }
-  .hero-eyebrow{
-    font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light);font-weight:700;margin-bottom:8px;
-    display:flex;align-items:center;gap:7px;
-  }
-  .hero h1{font-size:26px;margin:0;color:#fff;}
-  .hero .today{font-size:12.5px;color:rgba(255,255,255,0.62);margin-top:6px;}
-  .hero .pill-role{
-    background:rgba(255,255,255,0.10);color:var(--gold-light);
-    border:1px solid rgba(230,204,126,0.3);
-  }
+  .workspace-header h1{font-size:19px;margin:0;color:var(--navy);}
+  .workspace-header .today{font-size:12px;color:var(--muted);margin-top:2px;}
 
   .pill-role{
     font-size:12px;font-weight:700;padding:7px 14px;border-radius:999px;
     display:flex;align-items:center;gap:6px;flex-shrink:0;
+    background:var(--emerald-soft);color:var(--emerald);
   }
 
-  .site-main{max-width:1240px;margin:0 auto;}
-  .content{padding:28px 32px 40px;max-width:1180px;margin:0 auto;}
+  .content{padding:24px 30px 46px;max-width:1180px;}
   .view{display:none;}
   .view.active{display:block;animation:fadeIn .25s ease;}
   @keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
 
   .site-footer{
     border-top:1px solid var(--border);
-    padding:20px 32px 32px;text-align:center;
-    font-size:11.5px;color:var(--muted);
-    max-width:1240px;margin:0 auto;
+    padding:16px 30px 24px;text-align:left;
+    font-size:11px;color:var(--muted);
   }
   .site-footer b{color:var(--navy);}
 
@@ -316,34 +315,44 @@
   @media (max-width:900px){
     .stat-grid{grid-template-columns:repeat(2,1fr);}
     .grid-2{grid-template-columns:1fr;}
-    .nav-inner{padding:10px 16px;gap:14px;flex-wrap:nowrap;overflow-x:auto;}
-    .brand{margin-right:12px;}
-    nav.navlist{overflow-x:auto;}
-    .navlist a{padding:8px 10px;}
-    .nav-meta{display:none;}
-    .hero-inner{padding:22px 18px 20px;}
-    .hero h1{font-size:21px;}
-    .content{padding:20px 16px 40px;}
-    .site-footer{padding:16px 18px 26px;}
+    .titlebar{padding:0 12px;}
+    .titlebar-left .tb-name{max-width:120px;}
+    .version-pill{display:none;}
+    .app-shell{flex-direction:column;}
+    .sidebar{width:100%;height:auto;position:relative;top:0;flex-direction:row;overflow-x:auto;}
+    nav.navlist{display:flex;padding:8px;flex:none;}
+    .navlist a{white-space:nowrap;margin-bottom:0;}
+    .sidebar-foot{display:none;}
+    .workspace-header{padding:12px 16px;position:relative;top:0;}
+    .content{padding:18px 14px 40px;}
+    .site-footer{padding:14px 16px 22px;}
   }
 </style>
 </head>
 <body>
 
 <!-- ================= NAVBAR ================= -->
-<header class="site-header">
-  <div class="nav-inner">
-    <div class="brand">
-      <svg width="30" height="34" viewBox="0 0 100 116" fill="none">
-        <path d="M50 4 L92 78 C97 87 90 100 78 100 H22 C10 100 3 87 8 78 Z" stroke="#E6CC7E" stroke-width="6" fill="none"/>
-        <path d="M50 34 L58 56 L50 50 L42 56 Z" fill="#E6CC7E"/>
-        <path d="M32 66 L50 58 L68 66 L68 82 L50 90 L32 82 Z" fill="#E6CC7E"/>
-      </svg>
-      <div class="brand-text">
-        <div class="name">AIS Al-Hidayah</div>
-        <div class="sub">Absensi Pelajaran</div>
-      </div>
-    </div>
+<!-- ================= TITLE BAR ================= -->
+<div class="titlebar">
+  <div class="titlebar-left">
+    <svg width="22" height="25" viewBox="0 0 100 116" fill="none">
+      <path d="M50 4 L92 78 C97 87 90 100 78 100 H22 C10 100 3 87 8 78 Z" stroke="#E6CC7E" stroke-width="7" fill="none"/>
+      <path d="M50 34 L58 56 L50 50 L42 56 Z" fill="#E6CC7E"/>
+      <path d="M32 66 L50 58 L68 66 L68 82 L50 90 L32 82 Z" fill="#E6CC7E"/>
+    </svg>
+    <span class="tb-name">AIS Al-Hidayah — Absensi Pelajaran</span>
+  </div>
+  <div class="titlebar-right">
+    <span class="version-pill"><span class="star-icon">✦</span> v2 · Auto-Connect Cloud</span>
+    <button class="conn-badge offline" id="connBadge" onclick="openSettingsModal()">
+      <span class="conn-dot"></span> <span id="connBadgeText">Mode Lokal</span>
+    </button>
+  </div>
+</div>
+
+<!-- ================= APP SHELL ================= -->
+<div class="app-shell">
+  <aside class="sidebar star-pattern">
     <nav class="navlist" id="navlist">
       <a data-view="dashboard" class="active">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
@@ -366,32 +375,26 @@
         Data Kelas
       </a>
     </nav>
-    <div class="nav-meta">
-      <button class="conn-badge offline" id="connBadge" onclick="openSettingsModal()">
-        <span class="conn-dot"></span> <span id="connBadgeText">Mode Lokal</span>
-      </button>
+    <div class="sidebar-foot">
+      Musyrif: <b>Arif</b><br>
+      <span id="clockFoot"></span>
     </div>
-  </div>
-</header>
+  </aside>
 
-<!-- ================= HERO ================= -->
-<section class="hero star-pattern">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-eyebrow"><span class="star-icon">✦</span> AIS Al-Hidayah Boarding School</div>
-      <h1 id="pageTitle">Dashboard</h1>
-      <div class="today" id="todayLabel"></div>
+  <!-- ================= WORKSPACE ================= -->
+  <div class="workspace">
+    <div class="workspace-header">
+      <div>
+        <h1 id="pageTitle">Dashboard</h1>
+        <div class="today" id="todayLabel"></div>
+      </div>
+      <span class="pill-role">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l2.2 6.6H21l-5.4 4 2 6.6L12 15l-5.6 4.2 2-6.6L3 8.6h6.8z"/></svg>
+        7 Mata Pelajaran
+      </span>
     </div>
-    <span class="pill-role">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l2.2 6.6H21l-5.4 4 2 6.6L12 15l-5.6 4.2 2-6.6L3 8.6h6.8z"/></svg>
-      7 Mata Pelajaran
-    </span>
-  </div>
-</section>
 
-<!-- ================= MAIN ================= -->
-<main class="site-main">
-  <div class="content">
+    <div class="content">
 
       <!-- ============ DASHBOARD ============ -->
       <div class="view active" id="view-dashboard">
@@ -615,12 +618,13 @@
         </div>
       </div>
 
-  </div>
-</main>
+    </div>
 
-<footer class="site-footer">
-  Sistem Absensi Pelajaran &middot; <b>AIS Al-Hidayah Boarding School</b> &middot; dikelola oleh Musyrif
-</footer>
+    <footer class="site-footer">
+      Sistem Absensi Pelajaran &middot; <b>AIS Al-Hidayah Boarding School</b> &middot; dikelola oleh Musyrif
+    </footer>
+  </div>
+</div>
 
 <div class="modal-overlay" id="settingsModal">
   <div class="modal-box">
